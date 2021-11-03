@@ -2,11 +2,11 @@ extends layout
 
 block content
   h1= title
-  p `row #{query.row}`
-  p `col #{query.col}`
-  - var row=Number(query.row)
-  - var col=Number(query.col)
-  if !(Number.isInteger(row)) || !(Number.isInteger(col))
+  p `row #{query.rows}`
+  p `col #{query.cols}`
+  - var rows=Number(query.rows)
+  - var cols=Number(query.cols)
+  if !(Number.isInteger(rows)) || !(Number.isInteger(cols))
     p It doesnt have any value
   else if row > 6
     p Row size shouldnt be greater than 6
@@ -14,9 +14,9 @@ block content
     p Column size shouldnt be greater than 6
   else
    table#outer
-    - for(let i=0; i<query.row; i++) { 
+    - for(let i=0; i<query.rows; i++) { 
        tr#middle
-         - for(let j=0; j<query.col; j++) { 
-           td= (i + j) % query.row
+         - for(let j=0; j<query.cols; j++) { 
+           td= (i + j) % query.rows
          - }
-    - }-
+    - }
